@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
-from app import db
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@127.0.0.1:3306/movie'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+db = SQLAlchemy(app)
 
 # 会员
 class User(db.Model):
@@ -174,7 +180,7 @@ class Oplog(db.Model):
         return '<Oplog> {0}'.format(self.id)
 
 
-        # if __name__ == '__main__':
+if __name__ == '__main__':
         # db.create_all() # 创建数据表
 
         # 测试数据
@@ -186,12 +192,12 @@ class Oplog(db.Model):
         # db.session.commit()
 
 
-        # from werkzeug.security import generate_password_hash
-        # admin = Admin(
-        #     name='imooc2',
-        #     pwd=generate_password_hash('zhuangjiarui'),
-        #     is_super=0,
-        #     role_id=1
-        # )
-        # db.session.add(admin)
-        # db.session.commit()
+        from werkzeug.security import generate_password_hash
+        admin = Admin(
+            name='zhuang',
+            pwd=generate_password_hash('123456'),
+            is_super=0,
+            role_id=1
+        )
+        db.session.add(admin)
+        db.session.commit()

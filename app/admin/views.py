@@ -3,7 +3,6 @@ from . import admin
 from flask import render_template, redirect, url_for, flash, session, request
 from app.models import Admin, Tag
 from functools import wraps
-from app import db
 
 
 @admin.route('/')
