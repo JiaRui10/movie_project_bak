@@ -180,7 +180,7 @@ class Oplog(db.Model):
         return '<Oplog> {0}'.format(self.id)
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
         # db.create_all() # 创建数据表
 
         # 测试数据
@@ -192,12 +192,12 @@ if __name__ == '__main__':
         # db.session.commit()
 
 
-        from werkzeug.security import generate_password_hash
-        admin = Admin(
-            name='zhuang',
-            pwd=generate_password_hash('123456'),
-            is_super=0,
-            role_id=1
-        )
-        db.session.add(admin)
-        db.session.commit()
+        # from werkzeug.security import generate_password_hash
+        # admin = Admin(
+        #     name='zhuang',
+        #     pwd=generate_password_hash('123456'),
+        #     is_super=0,
+        #     role_id=1
+        # )
+        # db.session.add(admin)
+        # db.session.commit()
